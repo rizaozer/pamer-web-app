@@ -1,28 +1,27 @@
-package ee.pamer.controller;
+package ee.pamer.service;
 
 import ee.pamer.model.Medication;
 import ee.pamer.repository.MedicationRepository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/medications")
-public class MedicationController {
+@Service
+public class MedicationService {
 
     private final MedicationRepository medicationRepository;
 
-    public MedicationController(MedicationRepository medicationRepository) {
+    @Autowired
+    public MedicationService(MedicationRepository medicationRepository) {
         this.medicationRepository = medicationRepository;
     }
 
-    @GetMapping
     public List<Medication> getAllMedications() {
         return medicationRepository.findAll();
     }
 
-    @PostMapping
-    public Medication addMedication(@RequestBody Medication medication) {
+    public Medication addMedication(Medication medication) {
         return medicationRepository.save(medication);
     }
 }
