@@ -6,11 +6,11 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StringEncryptor implements StringEncryptor {
+public class MyStringEncryptor implements StringEncryptor {
 
     private final BasicTextEncryptor delegate;
 
-    public StringEncryptor(String secretKey) {
+    public MyStringEncryptor(String secretKey) {
         delegate = new BasicTextEncryptor();
         delegate.setPassword(secretKey);
     }
