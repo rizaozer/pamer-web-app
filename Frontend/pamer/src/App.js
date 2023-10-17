@@ -1,31 +1,41 @@
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import React, { useState } from "react";
-import { DateRangePicker } from "react-dates";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Topbar from "./scenes/global/Topbar";
+import Sidebar from "./scenes/global/Sidebar";
+import Dashboard from "./scenes/dashboard";
+import Team from "./scenes/team";
+import Contacts from "./scenes/contacts";
+import Form from "./scenes/form";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ColorModeContext, useMode } from "./theme";
+import Calendar from "./scenes/calendar/calendar";
+import Login from "./scenes/login/Login";
 
 function App() {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [focusedInput, setFocusedInput] = useState(null);
-
-  const handleDatesChange = ({ startDate, endDate }) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
+  const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   return (
-    <DateRangePicker
-      startDate={startDate}
-      startDateId="your_unique_start_date_id"
-      endDate={endDate}
-      endDateId="your_unique_end_date_id"
-      onDatesChange={handleDatesChange}
-      focusedInput={focusedInput}
-      onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-      // other props you want to pass to the DateRangePicker component.
-    />
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          {isLoggedIn ? <Sidebar isSidebar={isSidebar} /> : null}
+          <main className="content">
+            {isLoggedIn ? <Topbar setIsSidebar={setIsSidebar} /> : null}
+            <Routes>
+              <Route path="/" element={<Login setLoggedIn={setLoggedIn} />} />
+              <Route path="/DashBoard" element={<Dashboard />} />
+              <Route path="/Patients" element={<Team />} />
+              <Route path="/Medicines" element={<Contacts />} />
+              <Route path="/form" element={<Form />} />
+              <Route path="/calendar" element={<Calendar />} />
+            </Routes>
+          </main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
