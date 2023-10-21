@@ -32,6 +32,5 @@ public class MedicineService {
     public List<Medicine> getMedicinesByPatientId(Long patientId) {
         return medicineRepository.findByPatientId(patientId);
     }
-    
-    // ... other service methods
+
 }
