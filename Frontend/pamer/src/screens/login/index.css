@@ -1,0 +1,184 @@
+.container {
+    position: relative; /* Enables the use of pseudo-elements with absolute positioning within this container */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .container::before {
+    height: 100vh;
+    content: "";  /* Essential for the pseudo-element to display */
+    position: absolute;  /* Make it span the whole container */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; 
+    background-image: linear-gradient(120deg,#3d0dad 0%,rgba(42,63,201,0.77) 100%), url('./clinic90.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  
+  .left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 16em;
+    padding-right: 4em;
+  }
+  
+  .left-section h1 {
+    font-size: 3em;
+    color: white;
+    margin-bottom: 20px;
+    display: flex;
+  
+  }
+  
+  .left-section p {
+    color: white;
+    font-size: 1.2em;
+    max-width: 70%;
+    margin-bottom: 40px;
+  }
+  
+  .book-appointment-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 900;
+    color: white;
+    background-color: #5e89fb; /* Blue button background */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 50px;
+    width: 380px;
+  }
+  
+  .book-appointment-btn:hover {
+    background-color: #7f9ff7; /* Darker blue on hover */
+  }
+  
+  .right-section {
+    flex: 0.5;
+    padding: 80px;
+    background-color: #0CC788; /* Green background */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: center; */
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    height: 550px;
+    margin-right: 500px;
+  
+  }
+  
+  .right-section h2 {
+    font-size: 2em;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .right-section p {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+    max-width: 70%;
+    margin-bottom: 10px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    height: 50px;
+  }
+  
+  .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  .forgot-password {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    align-self: center;
+    text-decoration: underline;
+  }
+  
+  .login-btn {
+    width: 105%;
+    height: 13%;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: rgb(255 255 255 / 12%); /* Blue button background */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: #ffffff52; 
+  }
+  
+  
+  
+  .left-section-image {
+      max-width: 100%; 
+      height: auto;     
+  }
+  
+  .input-field::placeholder {
+    font-size: 18px;
+  }
+
+  .forgot-password {
+    font-size: 16px;
+  }
+
+  .error-message {
+    display: block;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+    
+  .error-message::before {
+    content: "\26A0"; 
+    margin-right: 8px;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-message {
+    animation: fadeIn 0.3s ease-out;
+}
