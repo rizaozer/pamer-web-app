@@ -64,8 +64,8 @@
   }
   
   .right-section {
-    flex: 0.5;
-    padding: 80px;
+    flex: 0.6;
+    padding: 100px;
     background-color: #0CC788; /* Green background */
     display: flex;
     flex-direction: column;
@@ -89,13 +89,12 @@
     font-size: 1.2em;
     text-align: center;
     max-width: 70%;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
   }
   
   .input-field {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: none;
     border-radius: 4px;
     height: 50px;
@@ -163,7 +162,6 @@
 }
     
   .error-message::before {
-    content: "\26A0"; 
     margin-right: 8px;
 }
 
