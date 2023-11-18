@@ -11,7 +11,6 @@ import java.util.List;
 @RequestMapping("/api/medicines")
 public class MedicineController {
 
-    @Autowired
     private MedicineService medicineService;
     
     @GetMapping
@@ -31,7 +30,6 @@ public class MedicineController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Medicine> updateMedicine(@PathVariable Long id, @RequestBody Medicine medicine) {
-        // Check if the medicine exists before updating
         return ResponseEntity.ok(medicineService.saveOrUpdateMedicine(medicine));
     }
 
@@ -45,6 +43,4 @@ public class MedicineController {
     public ResponseEntity<List<Medicine>> getMedicinesByPatientId(@PathVariable Long patientId) {
         return ResponseEntity.ok(medicineService.getMedicinesByPatientId(patientId));
     }
-
-    // ... other controller methods
 }
