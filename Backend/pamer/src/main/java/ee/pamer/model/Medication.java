@@ -1,8 +1,6 @@
 package ee.pamer.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import java.util.Date;
@@ -19,7 +17,8 @@ public class Medication {
     private String dosage;
     private Date startDate;
     private Date endDate;
+    @ManyToMany
     private List<Medicine> medications;
+    @OneToOne
     private Patient patient;
-    // Add more fields as needed
 }
